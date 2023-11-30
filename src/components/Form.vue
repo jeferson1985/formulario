@@ -49,16 +49,16 @@ export default {
       </svg>
     </button>
     <div
-      class="absolute w-4/5 md:w-1/2 h-auto top-20 md:top-32 right-12 md:right-64 lg:right-96 left-12 md:left-64 lg:left-96 bg-transparent border-2 border-white rounded-3xl shadow-lg shadow-yellow-400"
+      class="absolute w-4/5 md:w-1/2 h-auto top-32 md:top-32 right-12 md:right-64 lg:right-96 left-12 md:left-64 lg:left-96 bg-transparent border-2 border-white rounded-3xl shadow-lg shadow-yellow-400"
     >
       <div class="flex h-full">
-        <div class="w-6/12 bg-transparent flex justify-center items-center">
+        <div class="w-6/12 bg-transparent hidden md:flex justify-center items-center">
           <h1 class="text-gray-300 text-center text-4xl p-4 font-bold">
-            <span class="text-2xl lg:text-4xl text-yellow-400">Informe</span> seus dados por
+            <span class="flex text-2xl lg:text-4xl text-yellow-400">Informe</span> seus dados por
             gentileza!
           </h1>
         </div>
-        <form class="w-6/12 backdrop-blur-xl bg-white/30 rounded-3xl" action="">
+        <form class="w-full md:w-6/12 backdrop-blur-xl bg-white/30 rounded-3xl" action="">
           <h1 class="text-white text-lg md:text-2xl text-center py-4">
             Preencha os campos!
           </h1>
@@ -162,20 +162,20 @@ export default {
       </div>
     </div>
     <footer>
-        <div class="flex justify-around backdrop-blur-xl bg-white/30 absolute bottom-0 h-20 w-full py-1">
-            <div class="text-white">
-                <p class="text-xl font-bold">Nosso telefone</p>
+        <div class="md:flex justify-around bg-gray-800 h-auto w-full py-1 px-4 md:px-0">
+            <div class="text-gray-500">
+                <p class="text-white text-xl font-bold">Nosso telefone</p>
                 <div class="flex flex-col">
                     <a class="font-light" href="5130449292">(51) 30449292</a>
                     <a class="font-light" href="51999333095">(51) 9 99333095</a>
                 </div>
             </div>
-            <div class="text-white">
-                <p class="text-xl font-bold">Nosso Email</p>
+            <div class="text-gray-500">
+                <p class="text-white text-xl font-bold">Nosso Email</p>
                 <a href="automasafety@automasafety.com.br">automasafety@automasafety.com.br</a>
             </div>
-            <div class="text-white">
-                <p class="text-xl font-bold">Nossos Horários</p>
+            <div class="text-gray-500">
+                <p class="text-white text-xl font-bold">Nossos Horários</p>
                 <div class="flex flex-col">
                     <label for="">Segunda a Quinta, das 08h00 às 18h</label>
                     <label for="">Sexta, das 08h00 às 17h.</label>
