@@ -49,7 +49,7 @@ export default {
       </svg>
     </button>
     <div
-      class="absolute w-4/5 md:w-1/2 h-auto top-32 md:top-32 right-12 md:right-64 lg:right-96 left-12 md:left-64 lg:left-96 bg-transparent border-2 border-white rounded-3xl shadow-lg shadow-yellow-400"
+      class="content-form w-4/5 md:w-1/2 h-auto bg-transparent border-2 border-white rounded-3xl shadow-lg shadow-yellow-400"
     >
       <div class="flex h-full">
         <div class="w-6/12 bg-transparent hidden md:flex justify-center items-center">
@@ -187,4 +187,17 @@ export default {
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.content-form {
+  position: absolute;
+  right: 25%;
+  top: 10%;
+}
+
+@media(max-width: 768px) {
+  .content-form {
+    position: absolute;
+    right: 10%;
+  }
+}
+</style>
