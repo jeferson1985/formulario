@@ -1,16 +1,33 @@
 <script>
 import DropDown from "../components/DropDown.vue";
+import api from "../services/api";
 
 export default {
   name: "Form",
   components: { DropDown },
   data: () => ({
     isHidden: true,
+    nome: '',
+    email: '',
+    telefone: '',
   }),
   methods: {
     toggleVisibility() {
       this.isHidden = !this.isHidden;
     },
+    enviarFormulario() {
+      const data = {
+        nome: this.nome,
+        email: this.email,
+        telefone: this.telefone
+      }
+      try {
+        const response = api.post('/enviar-email/', data)
+        console.log('dados', response)
+      } catch (error) {
+        console.log('erro', error)
+      }
+    }
   },
 };
 </script>
@@ -58,12 +75,12 @@ export default {
             gentileza!
           </h1>
         </div>
-        <form class="w-full md:w-6/12 backdrop-blur-xl bg-white/30 rounded-3xl" action="">
+        <form class="w-full md:w-6/12 backdrop-blur-xl bg-white/30 rounded-3xl" action="" @submit.prevent="enviarFormulario">
           <h1 class="text-white text-lg md:text-2xl text-center py-4">
             Preencha os campos!
           </h1>
           <div class="flex flex-col space-y-2 w-full mb-6 px-6">
-            <label class="flex text-lg md:text-2xl text-white font-smibold" for="username"
+            <label class="flex text-lg md:text-2xl text-white font-smibold" for="nome"
               >Nome Completo</label
             >
             <div
@@ -91,7 +108,7 @@ export default {
             </div>
           </div>
           <div class="flex flex-col space-y-2 w-full mb-6 px-6">
-            <label class="flex text-lg md:text-2xl text-white font-smibold" for="username"
+            <label class="flex text-lg md:text-2xl text-white font-smibold" for="email"
               >Email</label
             >
             <div
@@ -121,7 +138,7 @@ export default {
             </div>
           </div>
           <div class="flex flex-col space-y-2 w-full mb-6 px-6">
-            <label class="flex text-lg md:text-2xl text-white font-smibold" for="username"
+            <label class="flex text-lg md:text-2xl text-white font-smibold" for="telefone"
               >Telefone</label
             >
             <div
