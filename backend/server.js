@@ -18,14 +18,6 @@ app.get("/", (req, res) => {
 app.post("/enviar-email", (req, res) => {
   const { nome, email, telefone } = req.body;
 
-  //   const transporter = nodemailer.createTransport({
-  //     service: 'gmail',
-  //     auth: {
-  //         user: 'jeffersonribeirojesus85@gmail.com',
-  //         pass: 'Y_amahamt03'
-  //     }
-  //   });
-
   const transporter = nodemailer.createTransport({
     host: "sandbox.smtp.mailtrap.io",
     port: 2525,
@@ -40,7 +32,7 @@ app.post("/enviar-email", (req, res) => {
     to: "refej@hotmail.com",
     subject: "Dados de Coleta",
     text: `Nome: ${nome}\nEmail: ${email}\nTelefone: ${telefone}`,
-    html: "<h1>Dados do Cliente:</h1>"
+    html: `<h1>Dados do Cliente:\n${nome}\n${email}\n${telefone}</h1>`
   };
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {

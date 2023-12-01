@@ -10,23 +10,34 @@ export default {
     nome: '',
     email: '',
     telefone: '',
+    showmessage: false,
   }),
   methods: {
     toggleVisibility() {
       this.isHidden = !this.isHidden;
     },
-    enviarFormulario() {
+    async enviarFormulario() {
       const data = {
         nome: this.nome,
         email: this.email,
-        telefone: this.telefone
+        telefone: this.telefone,
       }
       try {
-        const response = api.post('/enviar-email/', data)
+        const response = await api.post('/enviar-email/', data)
         console.log('dados', response)
+        this.showmessage = true
+        setTimeout(() => {
+            this.showmessage = false
+        }, 2000);
+        this.limparCampos()
       } catch (error) {
         console.log('erro', error)
       }
+    },
+    limparCampos() {
+      this.nome = '',
+      this.email = '',
+      this.telefone = ''
     }
   },
 };
@@ -36,9 +47,19 @@ export default {
   <div class="relative">
     <img
       class="w-full h-screen bg-no-repeat"
-      src="../assets/respingo-colorido-abstrato-3d-background-generativo-ai-background.jpg"
+      src="../assets/logoseguranca.jpg"
       alt="background"
     />
+    <div class="title">
+      <h1 class="text-4xl text-red-600">Automasafety</h1>
+      <p>Soluções em segurança de máquinas</p>
+    </div>
+    <div class="w-64 h-64 absolute top-0 right-0">
+      <img src="../assets/industria.jpg" alt="">
+    </div>
+    <div v-if="showmessage" class="absolute top-4 right-4 text-md text-white bg-green-300 px-4 py-4 rounded-sm border-2 border-green-500 Z-50">
+      <p>Dados enviado com sucesso!</p>
+    </div>
     <section
       class="absolute top-16 left-56"
       :class="{ hidden: isHidden, flex: !isHidden }"
@@ -70,8 +91,8 @@ export default {
     >
       <div class="flex h-full">
         <div class="w-6/12 bg-transparent hidden md:flex justify-center items-center">
-          <h1 class="text-gray-300 text-center text-4xl p-4 font-bold">
-            <span class="flex text-2xl lg:text-4xl text-yellow-400">Informe</span> seus dados por
+          <h1 class="text-white text-center text-4xl p-4 font-bold">
+            <span class="flex text-2xl lg:text-4xl text-white">Informe</span> seus dados por
             gentileza!
           </h1>
         </div>
@@ -80,7 +101,7 @@ export default {
             Preencha os campos!
           </h1>
           <div class="flex flex-col space-y-2 w-full mb-6 px-6">
-            <label class="flex text-lg md:text-2xl text-white font-smibold" for="nome"
+            <label class="flex text-lg md:text-lg text-white font-smibold" for="nome"
               >Nome Completo</label
             >
             <div
@@ -88,7 +109,7 @@ export default {
             >
               <input
                 v-model="nome"
-                class="peer w-full bg-transparent focus:outline-none text-md md:text-xl py-1 text-gray-900"
+                class="peer w-full bg-transparent focus:outline-none text-md md:text-md py-1 text-gray-900"
                 placeholder="Nome"
                 type="text"
                 required
@@ -108,7 +129,7 @@ export default {
             </div>
           </div>
           <div class="flex flex-col space-y-2 w-full mb-6 px-6">
-            <label class="flex text-lg md:text-2xl text-white font-smibold" for="email"
+            <label class="flex text-lg md:text-lg text-white font-smibold" for="email"
               >Email</label
             >
             <div
@@ -116,7 +137,7 @@ export default {
             >
               <input
                 v-model="email"
-                class="peer w-full bg-transparent focus:outline-none text-md md:text-xl py-1 text-gray-900"
+                class="peer w-full bg-transparent focus:outline-none text-md md:text-md py-1 text-gray-900"
                 placeholder="Email"
                 type="text"
                 required
@@ -138,7 +159,7 @@ export default {
             </div>
           </div>
           <div class="flex flex-col space-y-2 w-full mb-6 px-6">
-            <label class="flex text-lg md:text-2xl text-white font-smibold" for="telefone"
+            <label class="flex text-lg md:text-lg text-white font-smibold" for="telefone"
               >Telefone</label
             >
             <div
@@ -146,7 +167,7 @@ export default {
             >
               <input
                 v-model="telefone"
-                class="peer w-full bg-transparent focus:outline-none text-md md:text-xl py-1 text-gray-900"
+                class="peer w-full bg-transparent focus:outline-none text-md md:text-md py-1 text-gray-900"
                 placeholder="Telefone"
                 type="text"
                 required
@@ -205,10 +226,23 @@ export default {
 </template>
 
 <style scoped>
+
+.title {
+  position: absolute;
+  top: 2%;
+  left: 8%;
+}
+
+@media(max-width: 768px) {
+  .title {
+    left: 17%;
+  }
+}
+
 .content-form {
   position: absolute;
   right: 25%;
-  top: 10%;
+  top: 15%;
 }
 
 @media(max-width: 768px) {

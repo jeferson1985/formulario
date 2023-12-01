@@ -8,10 +8,10 @@
           <hr>
           <div class="flex items-center gap-2 font-semibold border-1 border-gray-200 px-6 text-white cursor-pointer">
             <img class="w-8 rounded-md" src="../assets/linkedin.png" alt="">
-            <a class="mt-2 text-blue-500 text-bold" href="https://www.linkedin.com/company/automasafety/">LinkeIn</a>
+            <a class="mt-2 text-blue-500 text-bold" href="https://www.linkedin.com/company/automasafety/">LinkedIn</a>
           </div>
           <hr>
-          <div class="flex items-center gap-2 font-semibold border-1 border-gray-200 px-6 text-white cursor-pointer text-transparent text-lg bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+          <div class="flex items-center gap-2 font-semibold border-1 border-gray-200 px-6 text-purple-700 cursor-pointer text-transparent text-lg bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
             <img class="w-8 rounded-lg" src="../assets/instagram.png" alt="">
             <a class="mt-2" href="https://www.instagram.com/automasafety/">Instagram</a>
           </div>
